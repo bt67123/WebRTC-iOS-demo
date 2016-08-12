@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4BD5BAF31D5A26A2004E11AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5BAF21D5A26A2004E11AE /* main.m */; };
+		4BD5BAF61D5A26A2004E11AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5BAF51D5A26A2004E11AE /* AppDelegate.m */; };
+		4BD5BAF91D5A26A2004E11AE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5BAF81D5A26A2004E11AE /* ViewController.m */; };
+		4BD5BAFC1D5A26A2004E11AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5BAFA1D5A26A2004E11AE /* Main.storyboard */; };
+		4BD5BAFE1D5A26A2004E11AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5BAFD1D5A26A2004E11AE /* Assets.xcassets */; };
+		4BD5BB011D5A26A2004E11AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BD5BAFF1D5A26A2004E11AE /* LaunchScreen.storyboard */; };
+		4BD5BB0C1D5A26A2004E11AE /* WebRTC_iOS_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5BB0B1D5A26A2004E11AE /* WebRTC_iOS_demoTests.m */; };
+		4BD5BB171D5A29BD004E11AE /* Wilddog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB161D5A29BD004E11AE /* Wilddog.framework */; };
+		4BD5BB191D5A29E1004E11AE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB181D5A29E1004E11AE /* JavaScriptCore.framework */; };
+		4BD5BB1B1D5A29F6004E11AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB1A1D5A29F6004E11AE /* libsqlite3.tbd */; };
+		4BD5BB1E1D5AEDB6004E11AE /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5BB1D1D5AEDB6004E11AE /* RoomViewController.m */; };
+		4BD5BB201D5C5AF8004E11AE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB1F1D5C5AF8004E11AE /* libc++.tbd */; };
+		4BD5BB221D5C5B06004E11AE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB211D5C5B06004E11AE /* libicucore.tbd */; };
+		4BD5BB241D5C5B10004E11AE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB231D5C5B10004E11AE /* Security.framework */; };
+		4BD5BB261D5C5B1A004E11AE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB251D5C5B1A004E11AE /* CFNetwork.framework */; };
+		4BD5BB281D5C5B2E004E11AE /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB271D5C5B2E004E11AE /* libstdc++.6.tbd */; };
+		4BD5BB2A1D5C5B3B004E11AE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB291D5C5B3B004E11AE /* AudioToolbox.framework */; };
+		4BD5BB2C1D5C5B43004E11AE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB2B1D5C5B43004E11AE /* AVFoundation.framework */; };
+		4BD5BB2E1D5C5B52004E11AE /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB2D1D5C5B52004E11AE /* CoreAudio.framework */; };
+		4BD5BB301D5C5B5D004E11AE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB2F1D5C5B5D004E11AE /* CoreMedia.framework */; };
+		4BD5BB321D5C5B64004E11AE /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB311D5C5B64004E11AE /* CoreVideo.framework */; };
+		4BD5BB341D5C5B6F004E11AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB331D5C5B6F004E11AE /* CoreGraphics.framework */; };
+		4BD5BB361D5C5B78004E11AE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB351D5C5B78004E11AE /* OpenGLES.framework */; };
+		4BD5BB381D5C5B81004E11AE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB371D5C5B81004E11AE /* QuartzCore.framework */; };
+		4BD5BB581D5C5C76004E11AE /* webrtc-7880.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD5BB571D5C5C76004E11AE /* webrtc-7880.a */; };
+		4BD5BB5C1D5C6359004E11AE /* LCRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5BB5B1D5C6359004E11AE /* LCRTC.m */; };
+		4BD5BB5F1D5C6B50004E11AE /* LCCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5BB5E1D5C6B50004E11AE /* LCCore.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4BD5BB081D5A26A2004E11AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BD5BAE61D5A26A2004E11AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BD5BAED1D5A26A2004E11AE;
+			remoteInfo = "WebRTC-iOS-demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4BD5BAEE1D5A26A2004E11AE /* WebRTC-iOS-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WebRTC-iOS-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BD5BAF21D5A26A2004E11AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4BD5BAF41D5A26A2004E11AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4BD5BAF51D5A26A2004E11AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4BD5BAF71D5A26A2004E11AE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4BD5BAF81D5A26A2004E11AE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4BD5BAFB1D5A26A2004E11AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4BD5BAFD1D5A26A2004E11AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4BD5BB001D5A26A2004E11AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4BD5BB021D5A26A2004E11AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BD5BB071D5A26A2004E11AE /* WebRTC-iOS-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WebRTC-iOS-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BD5BB0B1D5A26A2004E11AE /* WebRTC_iOS_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebRTC_iOS_demoTests.m; sourceTree = "<group>"; };
+		4BD5BB0D1D5A26A2004E11AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BD5BB161D5A29BD004E11AE /* Wilddog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Wilddog.framework; path = ../Wilddog.framework; sourceTree = "<group>"; };
+		4BD5BB181D5A29E1004E11AE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		4BD5BB1A1D5A29F6004E11AE /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4BD5BB1C1D5AEDB6004E11AE /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
+		4BD5BB1D1D5AEDB6004E11AE /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
+		4BD5BB1F1D5C5AF8004E11AE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		4BD5BB211D5C5B06004E11AE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		4BD5BB231D5C5B10004E11AE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4BD5BB251D5C5B1A004E11AE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4BD5BB271D5C5B2E004E11AE /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		4BD5BB291D5C5B3B004E11AE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4BD5BB2B1D5C5B43004E11AE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4BD5BB2D1D5C5B52004E11AE /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		4BD5BB2F1D5C5B5D004E11AE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4BD5BB311D5C5B64004E11AE /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		4BD5BB331D5C5B6F004E11AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4BD5BB351D5C5B78004E11AE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4BD5BB371D5C5B81004E11AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4BD5BB3D1D5C5C76004E11AE /* RTCAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCAudioSource.h; sourceTree = "<group>"; };
+		4BD5BB3E1D5C5C76004E11AE /* RTCAudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCAudioTrack.h; sourceTree = "<group>"; };
+		4BD5BB3F1D5C5C76004E11AE /* RTCDataChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCDataChannel.h; sourceTree = "<group>"; };
+		4BD5BB401D5C5C76004E11AE /* RTCEAGLVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCEAGLVideoView.h; sourceTree = "<group>"; };
+		4BD5BB411D5C5C76004E11AE /* RTCI420Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCI420Frame.h; sourceTree = "<group>"; };
+		4BD5BB421D5C5C76004E11AE /* RTCICECandidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCICECandidate.h; sourceTree = "<group>"; };
+		4BD5BB431D5C5C76004E11AE /* RTCICEServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCICEServer.h; sourceTree = "<group>"; };
+		4BD5BB441D5C5C76004E11AE /* RTCMediaConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCMediaConstraints.h; sourceTree = "<group>"; };
+		4BD5BB451D5C5C76004E11AE /* RTCMediaSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCMediaSource.h; sourceTree = "<group>"; };
+		4BD5BB461D5C5C76004E11AE /* RTCMediaStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCMediaStream.h; sourceTree = "<group>"; };
+		4BD5BB471D5C5C76004E11AE /* RTCMediaStreamTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCMediaStreamTrack.h; sourceTree = "<group>"; };
+		4BD5BB481D5C5C76004E11AE /* RTCNSGLVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCNSGLVideoView.h; sourceTree = "<group>"; };
+		4BD5BB491D5C5C76004E11AE /* RTCOpenGLVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCOpenGLVideoRenderer.h; sourceTree = "<group>"; };
+		4BD5BB4A1D5C5C76004E11AE /* RTCPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCPair.h; sourceTree = "<group>"; };
+		4BD5BB4B1D5C5C76004E11AE /* RTCPeerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCPeerConnection.h; sourceTree = "<group>"; };
+		4BD5BB4C1D5C5C76004E11AE /* RTCPeerConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCPeerConnectionDelegate.h; sourceTree = "<group>"; };
+		4BD5BB4D1D5C5C76004E11AE /* RTCPeerConnectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCPeerConnectionFactory.h; sourceTree = "<group>"; };
+		4BD5BB4E1D5C5C76004E11AE /* RTCSessionDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSessionDescription.h; sourceTree = "<group>"; };
+		4BD5BB4F1D5C5C76004E11AE /* RTCSessionDescriptionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCSessionDescriptionDelegate.h; sourceTree = "<group>"; };
+		4BD5BB501D5C5C76004E11AE /* RTCStatsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCStatsDelegate.h; sourceTree = "<group>"; };
+		4BD5BB511D5C5C76004E11AE /* RTCStatsReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCStatsReport.h; sourceTree = "<group>"; };
+		4BD5BB521D5C5C76004E11AE /* RTCTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCTypes.h; sourceTree = "<group>"; };
+		4BD5BB531D5C5C76004E11AE /* RTCVideoCapturer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCVideoCapturer.h; sourceTree = "<group>"; };
+		4BD5BB541D5C5C76004E11AE /* RTCVideoRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCVideoRenderer.h; sourceTree = "<group>"; };
+		4BD5BB551D5C5C76004E11AE /* RTCVideoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCVideoSource.h; sourceTree = "<group>"; };
+		4BD5BB561D5C5C76004E11AE /* RTCVideoTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTCVideoTrack.h; sourceTree = "<group>"; };
+		4BD5BB571D5C5C76004E11AE /* webrtc-7880.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "webrtc-7880.a"; sourceTree = "<group>"; };
+		4BD5BB591D5C5D21004E11AE /* LC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LC.h; sourceTree = "<group>"; };
+		4BD5BB5A1D5C6359004E11AE /* LCRTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCRTC.h; sourceTree = "<group>"; };
+		4BD5BB5B1D5C6359004E11AE /* LCRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCRTC.m; sourceTree = "<group>"; };
+		4BD5BB5D1D5C6B50004E11AE /* LCCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCore.h; sourceTree = "<group>"; };
+		4BD5BB5E1D5C6B50004E11AE /* LCCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCore.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4BD5BAEB1D5A26A2004E11AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BD5BB381D5C5B81004E11AE /* QuartzCore.framework in Frameworks */,
+				4BD5BB361D5C5B78004E11AE /* OpenGLES.framework in Frameworks */,
+				4BD5BB341D5C5B6F004E11AE /* CoreGraphics.framework in Frameworks */,
+				4BD5BB321D5C5B64004E11AE /* CoreVideo.framework in Frameworks */,
+				4BD5BB581D5C5C76004E11AE /* webrtc-7880.a in Frameworks */,
+				4BD5BB301D5C5B5D004E11AE /* CoreMedia.framework in Frameworks */,
+				4BD5BB2E1D5C5B52004E11AE /* CoreAudio.framework in Frameworks */,
+				4BD5BB2C1D5C5B43004E11AE /* AVFoundation.framework in Frameworks */,
+				4BD5BB2A1D5C5B3B004E11AE /* AudioToolbox.framework in Frameworks */,
+				4BD5BB281D5C5B2E004E11AE /* libstdc++.6.tbd in Frameworks */,
+				4BD5BB261D5C5B1A004E11AE /* CFNetwork.framework in Frameworks */,
+				4BD5BB241D5C5B10004E11AE /* Security.framework in Frameworks */,
+				4BD5BB221D5C5B06004E11AE /* libicucore.tbd in Frameworks */,
+				4BD5BB201D5C5AF8004E11AE /* libc++.tbd in Frameworks */,
+				4BD5BB1B1D5A29F6004E11AE /* libsqlite3.tbd in Frameworks */,
+				4BD5BB191D5A29E1004E11AE /* JavaScriptCore.framework in Frameworks */,
+				4BD5BB171D5A29BD004E11AE /* Wilddog.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BD5BB041D5A26A2004E11AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4BD5BAE51D5A26A2004E11AE = {
+			isa = PBXGroup;
+			children = (
+				4BD5BAF01D5A26A2004E11AE /* WebRTC-iOS-demo */,
+				4BD5BB0A1D5A26A2004E11AE /* WebRTC-iOS-demoTests */,
+				4BD5BAEF1D5A26A2004E11AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4BD5BAEF1D5A26A2004E11AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5BAEE1D5A26A2004E11AE /* WebRTC-iOS-demo.app */,
+				4BD5BB071D5A26A2004E11AE /* WebRTC-iOS-demoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4BD5BAF01D5A26A2004E11AE /* WebRTC-iOS-demo */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5BB3A1D5C5C49004E11AE /* Libs */,
+				4BD5BB391D5C5C1B004E11AE /* Frameworks */,
+				4BD5BAF41D5A26A2004E11AE /* AppDelegate.h */,
+				4BD5BAF51D5A26A2004E11AE /* AppDelegate.m */,
+				4BD5BAF71D5A26A2004E11AE /* ViewController.h */,
+				4BD5BAF81D5A26A2004E11AE /* ViewController.m */,
+				4BD5BB1C1D5AEDB6004E11AE /* RoomViewController.h */,
+				4BD5BB1D1D5AEDB6004E11AE /* RoomViewController.m */,
+				4BD5BB5A1D5C6359004E11AE /* LCRTC.h */,
+				4BD5BB5B1D5C6359004E11AE /* LCRTC.m */,
+				4BD5BB5D1D5C6B50004E11AE /* LCCore.h */,
+				4BD5BB5E1D5C6B50004E11AE /* LCCore.m */,
+				4BD5BB591D5C5D21004E11AE /* LC.h */,
+				4BD5BAFA1D5A26A2004E11AE /* Main.storyboard */,
+				4BD5BAFD1D5A26A2004E11AE /* Assets.xcassets */,
+				4BD5BAFF1D5A26A2004E11AE /* LaunchScreen.storyboard */,
+				4BD5BB021D5A26A2004E11AE /* Info.plist */,
+				4BD5BAF11D5A26A2004E11AE /* Supporting Files */,
+			);
+			path = "WebRTC-iOS-demo";
+			sourceTree = "<group>";
+		};
+		4BD5BAF11D5A26A2004E11AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5BAF21D5A26A2004E11AE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4BD5BB0A1D5A26A2004E11AE /* WebRTC-iOS-demoTests */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5BB0B1D5A26A2004E11AE /* WebRTC_iOS_demoTests.m */,
+				4BD5BB0D1D5A26A2004E11AE /* Info.plist */,
+			);
+			path = "WebRTC-iOS-demoTests";
+			sourceTree = "<group>";
+		};
+		4BD5BB391D5C5C1B004E11AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5BB161D5A29BD004E11AE /* Wilddog.framework */,
+				4BD5BB371D5C5B81004E11AE /* QuartzCore.framework */,
+				4BD5BB351D5C5B78004E11AE /* OpenGLES.framework */,
+				4BD5BB331D5C5B6F004E11AE /* CoreGraphics.framework */,
+				4BD5BB311D5C5B64004E11AE /* CoreVideo.framework */,
+				4BD5BB2F1D5C5B5D004E11AE /* CoreMedia.framework */,
+				4BD5BB2D1D5C5B52004E11AE /* CoreAudio.framework */,
+				4BD5BB2B1D5C5B43004E11AE /* AVFoundation.framework */,
+				4BD5BB291D5C5B3B004E11AE /* AudioToolbox.framework */,
+				4BD5BB271D5C5B2E004E11AE /* libstdc++.6.tbd */,
+				4BD5BB251D5C5B1A004E11AE /* CFNetwork.framework */,
+				4BD5BB231D5C5B10004E11AE /* Security.framework */,
+				4BD5BB211D5C5B06004E11AE /* libicucore.tbd */,
+				4BD5BB1F1D5C5AF8004E11AE /* libc++.tbd */,
+				4BD5BB1A1D5A29F6004E11AE /* libsqlite3.tbd */,
+				4BD5BB181D5A29E1004E11AE /* JavaScriptCore.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		4BD5BB3A1D5C5C49004E11AE /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5BB3B1D5C5C76004E11AE /* WebRTC */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		4BD5BB3B1D5C5C76004E11AE /* WebRTC */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5BB3C1D5C5C76004E11AE /* public */,
+				4BD5BB571D5C5C76004E11AE /* webrtc-7880.a */,
+			);
+			path = WebRTC;
+			sourceTree = "<group>";
+		};
+		4BD5BB3C1D5C5C76004E11AE /* public */ = {
+			isa = PBXGroup;
+			children = (
+				4BD5BB3D1D5C5C76004E11AE /* RTCAudioSource.h */,
+				4BD5BB3E1D5C5C76004E11AE /* RTCAudioTrack.h */,
+				4BD5BB3F1D5C5C76004E11AE /* RTCDataChannel.h */,
+				4BD5BB401D5C5C76004E11AE /* RTCEAGLVideoView.h */,
+				4BD5BB411D5C5C76004E11AE /* RTCI420Frame.h */,
+				4BD5BB421D5C5C76004E11AE /* RTCICECandidate.h */,
+				4BD5BB431D5C5C76004E11AE /* RTCICEServer.h */,
+				4BD5BB441D5C5C76004E11AE /* RTCMediaConstraints.h */,
+				4BD5BB451D5C5C76004E11AE /* RTCMediaSource.h */,
+				4BD5BB461D5C5C76004E11AE /* RTCMediaStream.h */,
+				4BD5BB471D5C5C76004E11AE /* RTCMediaStreamTrack.h */,
+				4BD5BB481D5C5C76004E11AE /* RTCNSGLVideoView.h */,
+				4BD5BB491D5C5C76004E11AE /* RTCOpenGLVideoRenderer.h */,
+				4BD5BB4A1D5C5C76004E11AE /* RTCPair.h */,
+				4BD5BB4B1D5C5C76004E11AE /* RTCPeerConnection.h */,
+				4BD5BB4C1D5C5C76004E11AE /* RTCPeerConnectionDelegate.h */,
+				4BD5BB4D1D5C5C76004E11AE /* RTCPeerConnectionFactory.h */,
+				4BD5BB4E1D5C5C76004E11AE /* RTCSessionDescription.h */,
+				4BD5BB4F1D5C5C76004E11AE /* RTCSessionDescriptionDelegate.h */,
+				4BD5BB501D5C5C76004E11AE /* RTCStatsDelegate.h */,
+				4BD5BB511D5C5C76004E11AE /* RTCStatsReport.h */,
+				4BD5BB521D5C5C76004E11AE /* RTCTypes.h */,
+				4BD5BB531D5C5C76004E11AE /* RTCVideoCapturer.h */,
+				4BD5BB541D5C5C76004E11AE /* RTCVideoRenderer.h */,
+				4BD5BB551D5C5C76004E11AE /* RTCVideoSource.h */,
+				4BD5BB561D5C5C76004E11AE /* RTCVideoTrack.h */,
+			);
+			path = public;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4BD5BAED1D5A26A2004E11AE /* WebRTC-iOS-demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BD5BB101D5A26A2004E11AE /* Build configuration list for PBXNativeTarget "WebRTC-iOS-demo" */;
+			buildPhases = (
+				4BD5BAEA1D5A26A2004E11AE /* Sources */,
+				4BD5BAEB1D5A26A2004E11AE /* Frameworks */,
+				4BD5BAEC1D5A26A2004E11AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WebRTC-iOS-demo";
+			productName = "WebRTC-iOS-demo";
+			productReference = 4BD5BAEE1D5A26A2004E11AE /* WebRTC-iOS-demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4BD5BB061D5A26A2004E11AE /* WebRTC-iOS-demoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BD5BB131D5A26A2004E11AE /* Build configuration list for PBXNativeTarget "WebRTC-iOS-demoTests" */;
+			buildPhases = (
+				4BD5BB031D5A26A2004E11AE /* Sources */,
+				4BD5BB041D5A26A2004E11AE /* Frameworks */,
+				4BD5BB051D5A26A2004E11AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4BD5BB091D5A26A2004E11AE /* PBXTargetDependency */,
+			);
+			name = "WebRTC-iOS-demoTests";
+			productName = "WebRTC-iOS-demoTests";
+			productReference = 4BD5BB071D5A26A2004E11AE /* WebRTC-iOS-demoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4BD5BAE61D5A26A2004E11AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = lcj;
+				TargetAttributes = {
+					4BD5BAED1D5A26A2004E11AE = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					4BD5BB061D5A26A2004E11AE = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 4BD5BAED1D5A26A2004E11AE;
+					};
+				};
+			};
+			buildConfigurationList = 4BD5BAE91D5A26A2004E11AE /* Build configuration list for PBXProject "WebRTC-iOS-demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4BD5BAE51D5A26A2004E11AE;
+			productRefGroup = 4BD5BAEF1D5A26A2004E11AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4BD5BAED1D5A26A2004E11AE /* WebRTC-iOS-demo */,
+				4BD5BB061D5A26A2004E11AE /* WebRTC-iOS-demoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4BD5BAEC1D5A26A2004E11AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BD5BB011D5A26A2004E11AE /* LaunchScreen.storyboard in Resources */,
+				4BD5BAFE1D5A26A2004E11AE /* Assets.xcassets in Resources */,
+				4BD5BAFC1D5A26A2004E11AE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BD5BB051D5A26A2004E11AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4BD5BAEA1D5A26A2004E11AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BD5BAF91D5A26A2004E11AE /* ViewController.m in Sources */,
+				4BD5BAF61D5A26A2004E11AE /* AppDelegate.m in Sources */,
+				4BD5BAF31D5A26A2004E11AE /* main.m in Sources */,
+				4BD5BB5F1D5C6B50004E11AE /* LCCore.m in Sources */,
+				4BD5BB1E1D5AEDB6004E11AE /* RoomViewController.m in Sources */,
+				4BD5BB5C1D5C6359004E11AE /* LCRTC.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BD5BB031D5A26A2004E11AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BD5BB0C1D5A26A2004E11AE /* WebRTC_iOS_demoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4BD5BB091D5A26A2004E11AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4BD5BAED1D5A26A2004E11AE /* WebRTC-iOS-demo */;
+			targetProxy = 4BD5BB081D5A26A2004E11AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4BD5BAFA1D5A26A2004E11AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BD5BAFB1D5A26A2004E11AE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4BD5BAFF1D5A26A2004E11AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BD5BB001D5A26A2004E11AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4BD5BB0E1D5A26A2004E11AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4BD5BB0F1D5A26A2004E11AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4BD5BB111D5A26A2004E11AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebRTC-iOS-demo",
+				);
+				INFOPLIST_FILE = "WebRTC-iOS-demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebRTC-iOS-demo/Libs/WebRTC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lcj.WebRTC-iOS-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4BD5BB121D5A26A2004E11AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebRTC-iOS-demo",
+				);
+				INFOPLIST_FILE = "WebRTC-iOS-demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WebRTC-iOS-demo/Libs/WebRTC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lcj.WebRTC-iOS-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4BD5BB141D5A26A2004E11AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "WebRTC-iOS-demoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lcj.WebRTC-iOS-demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebRTC-iOS-demo.app/WebRTC-iOS-demo";
+			};
+			name = Debug;
+		};
+		4BD5BB151D5A26A2004E11AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "WebRTC-iOS-demoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lcj.WebRTC-iOS-demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebRTC-iOS-demo.app/WebRTC-iOS-demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4BD5BAE91D5A26A2004E11AE /* Build configuration list for PBXProject "WebRTC-iOS-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BD5BB0E1D5A26A2004E11AE /* Debug */,
+				4BD5BB0F1D5A26A2004E11AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4BD5BB101D5A26A2004E11AE /* Build configuration list for PBXNativeTarget "WebRTC-iOS-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BD5BB111D5A26A2004E11AE /* Debug */,
+				4BD5BB121D5A26A2004E11AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4BD5BB131D5A26A2004E11AE /* Build configuration list for PBXNativeTarget "WebRTC-iOS-demoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BD5BB141D5A26A2004E11AE /* Debug */,
+				4BD5BB151D5A26A2004E11AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4BD5BAE61D5A26A2004E11AE /* Project object */;
+}
