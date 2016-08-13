@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="V7u-9t-zjE">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -60,24 +59,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pd5-G4-983">
-                                <rect key="frame" x="148" y="468" width="34" height="30"/>
-                                <state key="normal" title="send"/>
-                                <connections>
-                                    <action selector="onSendClicked:" destination="aaH-0Q-bUj" eventType="touchUpInside" id="fP0-uF-pnb"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nPY-dL-nGk" customClass="RTCEAGLVideoView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="5qM-Fb-b9H" secondAttribute="bottom" id="ApV-yF-QTK"/>
                             <constraint firstItem="5qM-Fb-b9H" firstAttribute="top" secondItem="xNB-mD-ygb" secondAttribute="bottom" id="GqZ-7q-RFu"/>
+                            <constraint firstItem="nPY-dL-nGk" firstAttribute="leading" secondItem="XPI-z6-2g0" secondAttribute="leading" id="HiS-Bh-38Z"/>
+                            <constraint firstItem="5EP-LM-yRk" firstAttribute="top" secondItem="nPY-dL-nGk" secondAttribute="bottom" id="ORz-kV-EcL"/>
+                            <constraint firstAttribute="trailing" secondItem="nPY-dL-nGk" secondAttribute="trailing" id="fI3-XP-6Wi"/>
                             <constraint firstItem="5qM-Fb-b9H" firstAttribute="leading" secondItem="XPI-z6-2g0" secondAttribute="leading" id="hwO-HP-V4s"/>
+                            <constraint firstItem="nPY-dL-nGk" firstAttribute="top" secondItem="XPI-z6-2g0" secondAttribute="top" id="nMS-dy-2PU"/>
                             <constraint firstAttribute="trailing" secondItem="5qM-Fb-b9H" secondAttribute="trailing" id="psn-rw-CZj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YLo-3w-QUj"/>
                     <connections>
+                        <outlet property="remoteView" destination="nPY-dL-nGk" id="VVy-OJ-1q6"/>
                         <outlet property="textView" destination="5qM-Fb-b9H" id="qv3-LY-jGE"/>
                     </connections>
                 </viewController>

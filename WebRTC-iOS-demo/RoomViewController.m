@@ -10,8 +10,10 @@
 #import "RoomViewController.h"
 #import <Wilddog/Wilddog.h>
 
-@interface RoomViewController ()
+@interface RoomViewController () <LCCoreDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) IBOutlet RTCEAGLVideoView *remoteView;
+@property (strong, nonatomic) RTCVideoTrack *remoteVideoTrack;
 @property (nonatomic, strong) Wilddog *ref;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, assign) int mailId;
@@ -36,6 +38,7 @@
     [[_ref childByAppendingPath:userPath] setValue:@{@"state":@"join"}];
     
     LCCore *core = [LCCore sharedInstance];
+    core.delegate = self;
     core.username = _username;
     core.roomId = _roomId;
     
@@ -57,6 +60,12 @@
         numOfObserve++;
     }];
     
+    [[_ref childByAppendingPath:roomPath] observeEventType:WEventTypeChildAdded withBlock:^(WDataSnapshot * _Nonnull snapshot) {
+        if (![_username isEqualToString:snapshot.key]) {
+            core.remoteUsername = snapshot.key;
+        }
+    }];
+    
     [[_ref childByAppendingPath:mailboxPath] observeEventType:WEventTypeChildAdded withBlock:^(WDataSnapshot * _Nonnull snapshot) {
         NSLog(@"%@", snapshot);
         [rtc handleExchangeInfo:snapshot.value];
@@ -75,7 +84,14 @@
     _textView.text = [NSString stringWithFormat:@"%@\n\n%@", _textView.text, value];
 }
 
-- (IBAction)onSendClicked:(UIButton *)sender {
+# pragma mark - LCCoreDelegate
+- (void)didReceiveLocalVideoTrack:(id)track {
+    
+}
+
+- (void)didReceiveRemoteVideoTrack:(id)track {
+//    self.remoteVideoTrack = track;
+//    [self.remoteVideoTrack addRenderer:_remoteVideoTrack];
 }
 
 @end

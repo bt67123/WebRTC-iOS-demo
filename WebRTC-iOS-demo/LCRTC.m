@@ -57,23 +57,23 @@
     RTCMediaStream *stream = [_peerConnectionFactory mediaStreamWithLabel:@"ARDAMS"];
     
 //    if (_isVideoEnabled) {
-//        NSString *cameraID = nil;
-//        for (AVCaptureDevice *device in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-//            if (device.position == AVCaptureDevicePositionFront) {
-//                cameraID = [device localizedName];
-//                break;
-//            }
-//        }
-//        if (cameraID) {
-//            RTCVideoCapturer *capturer = [RTCVideoCapturer capturerWithDeviceName:cameraID];
-//            RTCMediaConstraints *videoConstraints = [[RTCMediaConstraints alloc] init];
-//            RTCVideoSource *videoSource = [self.peerConnectionFactory videoSourceWithCapturer:capturer
-//                                                                                  constraints:videoConstraints];
-//            RTCVideoTrack *videoTrack = [self.peerConnectionFactory videoTrackWithID:@"ARDAMSv0" source:videoSource];
-//            PWCore *core = [PWCore sharedInstance];
-//            [core.delegate didReceiveLocalVideoTrack:videoTrack];
-//            [stream addVideoTrack:videoTrack];
-//        }
+        NSString *cameraID = nil;
+        for (AVCaptureDevice *device in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
+            if (device.position == AVCaptureDevicePositionFront) {
+                cameraID = [device localizedName];
+                break;
+            }
+        }
+        if (cameraID) {
+            RTCVideoCapturer *capturer = [RTCVideoCapturer capturerWithDeviceName:cameraID];
+            RTCMediaConstraints *videoConstraints = [[RTCMediaConstraints alloc] init];
+            RTCVideoSource *videoSource = [self.peerConnectionFactory videoSourceWithCapturer:capturer
+                                                                                  constraints:videoConstraints];
+            RTCVideoTrack *videoTrack = [self.peerConnectionFactory videoTrackWithID:@"ARDAMSv0" source:videoSource];
+            LCCore *core = [LCCore sharedInstance];
+            [core.delegate didReceiveLocalVideoTrack:videoTrack];
+            [stream addVideoTrack:videoTrack];
+        }
 //    }
     
     [stream addAudioTrack:[_peerConnectionFactory audioTrackWithID:@"ARDAMSa0"]];
@@ -84,7 +84,7 @@
     RTCPair *audioPair = [[RTCPair alloc] initWithKey:@"OfferToReceiveAudio" value:@"true"];
     NSMutableArray *mandatoryConstraints = [NSMutableArray arrayWithObject:audioPair];
 //    if (_isVideoEnabled) {
-//        [mandatoryConstraints addObject:[[RTCPair alloc] initWithKey:@"OfferToReceiveVideo" value:@"true"]];
+        [mandatoryConstraints addObject:[[RTCPair alloc] initWithKey:@"OfferToReceiveVideo" value:@"true"]];
 //    }
     RTCMediaConstraints *constraints = [[RTCMediaConstraints alloc] initWithMandatoryConstraints:mandatoryConstraints
                                                                              optionalConstraints:nil];
@@ -146,7 +146,20 @@
 // Triggered when media is received on a new stream from remote peer.
 - (void)peerConnection:(RTCPeerConnection*)peerConnection
            addedStream:(RTCMediaStream*)stream {
-   
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        NSLog(@"peerConnection onAddStream.");
+        LCCore *core = [LCCore sharedInstance];
+//        if (_isVideoEnabled) {
+            if ([stream.audioTracks count] == 1 && [stream.videoTracks count] == 1) {
+                [core.delegate didReceiveRemoteVideoTrack:stream.videoTracks[0]];
+            } else {
+            }
+//        } else {
+            if ([stream.audioTracks count] == 1) {
+            } else {
+            }
+//        }
+    });
 }
 
 // Triggered when a remote peer close a stream.
@@ -157,14 +170,19 @@
 
 // Triggered when renegotation is needed, for example the ICE has restarted.
 - (void)peerConnectionOnRenegotiationNeeded:(RTCPeerConnection*)peerConnection {
-
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        NSLog(@"peerConnection onRenegotiationNeeded - ignoring because AppRTC has a predefined negotiation strategy");
+    });
 }
 
 // New Ice candidate have been found.
 - (void)peerConnection:(RTCPeerConnection*)peerConnection
        gotICECandidate:(RTCICECandidate*)candidate {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
-
+        NSLog(@"peerConnection onICECandidate.\n  Mid[%@] Index[%@] Sdp[%@]",
+              candidate.sdpMid,
+              @(candidate.sdpMLineIndex),
+              candidate.sdp);
         NSDictionary* candidateInfo = @{
                                         @"type" : @"candidate",
                                         @"label" : [NSNumber numberWithInteger:candidate.sdpMLineIndex],

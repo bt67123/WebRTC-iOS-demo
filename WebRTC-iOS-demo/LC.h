@@ -11,6 +11,7 @@
 
 # pragma mark Libs
 #import <Wilddog/Wilddog.h>
+#import <AVFoundation/AVFoundation.h>
 
 # pragma mark WebRTC
 #import "RTCICEServer.h"
