@@ -37,7 +37,7 @@
     RTCPair *audioPair = [[RTCPair alloc] initWithKey:@"OfferToReceiveAudio" value:@"true"];
     NSMutableArray *mandatoryConstraints = [NSMutableArray arrayWithObject:audioPair];
 //    if (_isVideoEnabled) {
-//        [mandatoryConstraints addObject:[[RTCPair alloc] initWithKey:@"OfferToReceiveVideo" value:@"true"]];
+        [mandatoryConstraints addObject:[[RTCPair alloc] initWithKey:@"OfferToReceiveVideo" value:@"true"]];
 //    }
     
     NSArray *optionalConstraints = @[[[RTCPair alloc] initWithKey:@"internalSctpDataChannels" value:@"true"],
@@ -263,7 +263,8 @@ didSetSessionDescriptionWithError:(NSError *)error {
         } else {
             // callee
             if (!_peerConnection.localDescription) {
-                NSArray *mandatoryConstraints = @[[[RTCPair alloc] initWithKey:@"OfferToReceiveAudio" value:@"true"]];
+                NSArray *mandatoryConstraints = @[[[RTCPair alloc] initWithKey:@"OfferToReceiveAudio" value:@"true"],
+                                                  [[RTCPair alloc] initWithKey:@"OfferToReceiveVideo" value:@"true"]];
                 RTCMediaConstraints *constraints = [[RTCMediaConstraints alloc] initWithMandatoryConstraints:mandatoryConstraints optionalConstraints:nil];
                 [_peerConnection createAnswerWithDelegate:self constraints:constraints];
             } else {

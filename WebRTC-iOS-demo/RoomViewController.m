@@ -13,6 +13,7 @@
 @interface RoomViewController () <LCCoreDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet RTCEAGLVideoView *remoteView;
+@property (strong, nonatomic) RTCEAGLVideoView *remoteView2;
 @property (strong, nonatomic) RTCVideoTrack *remoteVideoTrack;
 @property (nonatomic, strong) Wilddog *ref;
 @property (nonatomic, strong) NSString *username;
@@ -27,6 +28,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.remoteView.hidden = YES;
+    self.remoteView2 = [[RTCEAGLVideoView alloc] init];
+    self.remoteView2.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:_remoteView2];
     
     self.username = [NSString stringWithFormat:@"user%d", arc4random() % 10000];
     
@@ -73,13 +79,6 @@
     }];
 }
 
-//- (void)sayHi:(NSString *)username {
-//    NSString *mailboxPath = [NSString stringWithFormat:@"room%@/%@/mailbox", _roomId, username];
-//    NSDictionary *value = @{[NSString stringWithFormat:@"mail%d", _mailId++]:@{@"from":_username, @"type":@"offer", @"value":@"hi"}};
-//    [[_ref childByAppendingPath:mailboxPath] setValue:value];
-//    [self updateTextView:value];
-//}
-
 - (void)updateTextView:(id)value {
     _textView.text = [NSString stringWithFormat:@"%@\n\n%@", _textView.text, value];
 }
@@ -90,8 +89,8 @@
 }
 
 - (void)didReceiveRemoteVideoTrack:(id)track {
-//    self.remoteVideoTrack = track;
-//    [self.remoteVideoTrack addRenderer:_remoteVideoTrack];
+    self.remoteVideoTrack = track;
+    [self.remoteVideoTrack addRenderer:self.remoteView2];
 }
 
 @end

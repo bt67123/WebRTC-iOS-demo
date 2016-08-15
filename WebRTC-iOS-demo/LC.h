@@ -26,4 +26,5 @@
 #import "RTCPeerConnectionDelegate.h"
 #import "RTCEAGLVideoView.h"
 #import "RTCVideoCapturer.h"
+#import "RTCVideoTrack.h"
 #import "RTCDataChannel.h"
