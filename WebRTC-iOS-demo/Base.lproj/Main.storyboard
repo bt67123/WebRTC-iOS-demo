@@ -54,17 +54,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" id="nPY-dL-nGk" customClass="RTCEAGLVideoView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="YLo-3w-QUj"/>
                     <connections>
-                        <outlet property="remoteView" destination="nPY-dL-nGk" id="VVy-OJ-1q6"/>
                         <outlet property="textView" destination="5qM-Fb-b9H" id="qv3-LY-jGE"/>
                     </connections>
                 </viewController>

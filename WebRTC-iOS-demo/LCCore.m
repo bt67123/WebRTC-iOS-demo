@@ -31,7 +31,7 @@
 
 - (void)sendMsg:(NSDictionary *)msg toUser:(NSString *)username {
     self.ref = [[Wilddog alloc] initWithUrl:@"https://webrtc-ios-demo.wilddogio.com"];
-    NSString *mailboxPath = [NSString stringWithFormat:@"room%@/%@/mailbox/mail%d", _roomId, username, _mailId++];
+    NSString *mailboxPath = [NSString stringWithFormat:@"room%@/r/%@/mailbox/mail%d", _roomId, username, _mailId++];
     NSDictionary *value = msg;
     [[_ref childByAppendingPath:mailboxPath] setValue:value];
 }
