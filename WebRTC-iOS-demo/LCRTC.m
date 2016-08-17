@@ -101,6 +101,7 @@
 }
 
 - (void)stopPeerConnection {
+    NSLog(@"--------------- stop peer connection, %d", self.peerConnection.iceConnectionState);
     if (self.peerConnection.iceConnectionState != RTCICEConnectionNew) {
         [self.peerConnection close];
     }
@@ -150,8 +151,8 @@
         NSLog(@"peerConnection onAddStream.");
         LCCore *core = [LCCore sharedInstance];
 //        if (_isVideoEnabled) {
-            if ([stream.audioTracks count] == 1 && [stream.videoTracks count] == 1) {
-                [core.delegate didReceiveRemoteVideoTrack:stream.videoTracks[0]];
+            if ([stream.audioTracks count] > 0 && [stream.videoTracks count] > 0) {
+                [core.delegate didReceiveRemoteVideoTracks:stream.videoTracks];
             } else {
             }
 //        } else {

@@ -11,7 +11,7 @@
 @protocol LCCoreDelegate <NSObject>
 
 - (void)didReceiveLocalVideoTrack:(id)track;//RTCVideoTrack *
-- (void)didReceiveRemoteVideoTrack:(id)track;
+- (void)didReceiveRemoteVideoTracks:(NSArray *)tracks;
 
 @end
 
