@@ -18,14 +18,14 @@
 
 @implementation LCRTC
 
-+ (LCRTC *)sharedInstance {
-    static dispatch_once_t pred = 0;
-    __strong static LCRTC *_sharedrtc = nil;
-    dispatch_once(&pred, ^{
-        _sharedrtc = [[self alloc] init];
-    });
-    return _sharedrtc;
-}
+//+ (LCRTC *)sharedInstance {
+//    static dispatch_once_t pred = 0;
+//    __strong static LCRTC *_sharedrtc = nil;
+//    dispatch_once(&pred, ^{
+//        _sharedrtc = [[self alloc] init];
+//    });
+//    return _sharedrtc;
+//}
 
 /**
  * create peerConnection
@@ -70,8 +70,9 @@
             RTCVideoSource *videoSource = [self.peerConnectionFactory videoSourceWithCapturer:capturer
                                                                                   constraints:videoConstraints];
             RTCVideoTrack *videoTrack = [self.peerConnectionFactory videoTrackWithID:@"ARDAMSv0" source:videoSource];
-            LCCore *core = [LCCore sharedInstance];
-            [core.delegate didReceiveLocalVideoTrack:videoTrack];
+            if ([self.delegate respondsToSelector:@selector(rtc:didReceiveLocalVideoTrack:)]) {
+                [self.delegate rtc:self didReceiveLocalVideoTrack:videoTrack];
+            }
             [stream addVideoTrack:videoTrack];
         }
 //    }
@@ -149,10 +150,11 @@
            addedStream:(RTCMediaStream*)stream {
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         NSLog(@"peerConnection onAddStream.");
-        LCCore *core = [LCCore sharedInstance];
 //        if (_isVideoEnabled) {
-            if ([stream.audioTracks count] > 0 && [stream.videoTracks count] > 0) {
-                [core.delegate didReceiveRemoteVideoTracks:stream.videoTracks];
+            if ([stream.audioTracks count] == 1 && [stream.videoTracks count] == 1) {
+                if ([self.delegate respondsToSelector:@selector(rtc:didReceiveRemoteVideoTrack:)]) {
+                    [self.delegate rtc:self didReceiveRemoteVideoTrack:stream.videoTracks[0]];
+                }
             } else {
             }
 //        } else {
@@ -192,7 +194,7 @@
                                         };
         LCCore *core = [LCCore sharedInstance];
         NSLog(@".....exchange info : %@", candidateInfo);
-        [core exchange:candidateInfo];
+        [core exchange:candidateInfo toUser:_remoteUsername];
     });
 }
 
@@ -243,7 +245,7 @@ didCreateSessionDescription:(RTCSessionDescription *)sdp
         
         NSLog(@"sdpDict : %@", sdpDict);
         LCCore *core = [LCCore sharedInstance];
-        [core exchange:sdpDict];
+        [core exchange:sdpDict toUser:_remoteUsername];
     });
 }
 
@@ -255,8 +257,7 @@ didSetSessionDescriptionWithError:(NSError *)error {
             NSLog(@"sessionDescription onFailure.");
             return;
         }
-        LCCore *core = [LCCore sharedInstance];
-        if (core.isCaller) {
+        if (_isCaller) {
             // caller
             if (_peerConnection.remoteDescription) {
                 [self drainRemoteCandidates];

@@ -8,22 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol LCCoreDelegate <NSObject>
-
-- (void)didReceiveLocalVideoTrack:(id)track;//RTCVideoTrack *
-- (void)didReceiveRemoteVideoTracks:(NSArray *)tracks;
-
-@end
-
 @interface LCCore : NSObject
 
-@property (nonatomic, assign) BOOL isCaller;
+
 @property (nonatomic, copy) NSString *username;
-@property (nonatomic, copy) NSString *remoteUsername;
 @property (nonatomic, copy) NSString *roomId;
 
-@property (nonatomic, weak) id<LCCoreDelegate> delegate;
+
 
 + (LCCore *)sharedInstance;
-- (void)exchange:(NSDictionary *)info;
+- (void)exchange:(NSDictionary *)info toUser:(NSString *)username;
 @end

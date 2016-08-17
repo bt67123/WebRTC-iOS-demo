@@ -10,14 +10,10 @@
 #import "RoomViewController.h"
 #import <Wilddog/Wilddog.h>
 
-@interface RoomViewController () <LCCoreDelegate>
+@interface RoomViewController () <LCRTCDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
-@property (strong, nonatomic) RTCEAGLVideoView *remoteView;
-@property (strong, nonatomic) RTCEAGLVideoView *remoteView2;
 @property (strong, nonatomic) RTCEAGLVideoView *localView;
-@property (strong, nonatomic) RTCVideoTrack *remoteVideoTrack;
-@property (strong, nonatomic) RTCVideoTrack *remoteVideoTrack2;
 @property (strong, nonatomic) RTCVideoTrack *localVideoTrack;
 @property (nonatomic, strong) Wilddog *ref;
 @property (nonatomic, strong) Wilddog *ref_roomPath;
@@ -25,6 +21,9 @@
 @property (nonatomic, strong) Wilddog *ref_mailbox;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, assign) int mailId;
+@property (nonatomic, strong) NSMutableDictionary *rtcDic;
+@property (nonatomic, strong) NSMutableDictionary *remoteViewDic;
+@property (nonatomic, strong) NSMutableDictionary *remoteVideoTrackDic;
 @end
 
 @implementation RoomViewController
@@ -39,13 +38,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.remoteView = [[RTCEAGLVideoView alloc] init];
-    self.remoteView.frame = CGRectMake(0, 0, self.view.frame.size.width*0.5, self.view.frame.size.height*0.5);
-    [self.view addSubview:_remoteView];
-    
-    self.remoteView2 = [[RTCEAGLVideoView alloc] init];
-    self.remoteView2.frame = CGRectMake(self.view.frame.size.width*0.5, 0, self.view.frame.size.width*0.5, self.view.frame.size.height*0.5);
-    [self.view addSubview:_remoteView2];
+    self.rtcDic = [NSMutableDictionary dictionary];
+    self.remoteViewDic = [NSMutableDictionary dictionary];
+    self.remoteVideoTrackDic = [NSMutableDictionary dictionary];
     
     self.localView = [[RTCEAGLVideoView alloc] init];
     self.localView.frame = CGRectMake(0, 60, self.view.frame.size.width * 0.3, self.view.frame.size.height * 0.3);
@@ -66,21 +61,28 @@
     [[_ref childByAppendingPath:userPath] setValue:@{@"state":@"join"}];
     
     LCCore *core = [LCCore sharedInstance];
-    core.delegate = self;
     core.username = _username;
     core.roomId = _roomId;
-    
-    LCRTC *rtc = [LCRTC sharedInstance];
-    [rtc createPeerConnection];
     
     __weak typeof(self) weakself = self;
     static int numOfObserve = 0;
     [_ref_roomPath observeEventType:WEventTypeChildAdded withBlock:^(WDataSnapshot * _Nonnull snapshot) {
         for (NSString *username in [snapshot.value allKeys]) {
             if (![_username isEqualToString:username]) {
-                core.remoteUsername = username;
+                
+                if (![weakself.rtcDic.allKeys containsObject:username]) {
+                    [weakself createRemoteViewWithUsername:username];
+                    
+                    LCRTC *rtc = [[LCRTC alloc] init];
+                    rtc.delegate = weakself;
+                    [weakself.rtcDic setObject:rtc forKey:username];
+                    [rtc createPeerConnection];
+                    rtc.remoteUsername = username;
+                
+                }
                 if (numOfObserve == 0) {
-                    core.isCaller = YES;
+                    LCRTC *rtc = [weakself.rtcDic objectForKey:username];
+                    rtc.isCaller = YES;
                     [rtc createOffer];
                 }
             }
@@ -89,15 +91,30 @@
     }];
     
     [_ref_roomPath_r observeEventType:WEventTypeChildAdded withBlock:^(WDataSnapshot * _Nonnull snapshot) {
-        if (![_username isEqualToString:snapshot.key]) {
-            core.remoteUsername = snapshot.key;
+        NSString *remoteUsername = snapshot.key;
+        if (![_username isEqualToString:remoteUsername]) {
+            
+            if (![weakself.rtcDic.allKeys containsObject:remoteUsername]) {
+                [weakself createRemoteViewWithUsername:snapshot.key];
+                
+                LCRTC *rtc = [[LCRTC alloc] init];
+                rtc.delegate = weakself;
+                [weakself.rtcDic setObject:rtc forKey:snapshot.key];
+                [rtc createPeerConnection];
+                rtc.remoteUsername = snapshot.key;
+            }
         }
     }];
     
     [_ref_mailbox observeEventType:WEventTypeChildAdded withBlock:^(WDataSnapshot * _Nonnull snapshot) {
         NSLog(@"%@", snapshot);
-        [rtc handleExchangeInfo:snapshot.value];
-        [weakself updateTextView:@{snapshot.key:snapshot.value}];
+        if ([snapshot.value isKindOfClass:[NSDictionary class]]) {
+            LCRTC *rtc = [weakself.rtcDic objectForKey:[snapshot.value objectForKey:@"from"]];
+            if (rtc) {
+                [rtc handleExchangeInfo:snapshot.value];
+                [weakself updateTextView:@{snapshot.key:snapshot.value}];
+            }
+        }
     }];
 }
 
@@ -105,7 +122,22 @@
     [super viewDidDisappear:animated];
     
     [_ref_roomPath setValue:nil];
-    [[LCRTC sharedInstance] stopPeerConnection];
+    
+    [_rtcDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        LCRTC *rtc = obj;
+        [rtc stopPeerConnection];
+    }];
+}
+
+- (void)createRemoteViewWithUsername:(NSString *)username {
+    RTCEAGLVideoView *remoteView = [[RTCEAGLVideoView alloc] init];
+    remoteView.frame = CGRectMake(self.view.frame.size.width*(_remoteViewDic.count%2*0.5),
+                                       self.view.frame.size.height*(_remoteViewDic.count/2),
+                                       self.view.frame.size.width*0.5, self.view.frame.size.height*0.5);
+    [_remoteViewDic setObject:remoteView forKey:username];
+    [self.view addSubview:remoteView];
+    
+    [self.view bringSubviewToFront:_localView];
 }
 
 - (void)updateTextView:(id)value {
@@ -113,18 +145,15 @@
 }
 
 # pragma mark - LCCoreDelegate
-- (void)didReceiveLocalVideoTrack:(id)track {
+- (void)rtc:(LCRTC *)rtc didReceiveLocalVideoTrack:(id)track {
+    
     self.localVideoTrack = track;
     [self.localVideoTrack addRenderer:self.localView];
 }
 
-- (void)didReceiveRemoteVideoTracks:(NSArray *)tracks {
-    self.remoteVideoTrack = tracks[0];
-    [self.remoteVideoTrack addRenderer:self.remoteView];
-    if (tracks.count == 2) {
-        self.remoteVideoTrack2 = tracks[1];
-        [self.remoteVideoTrack2 addRenderer:self.remoteView2];
-    }
+- (void)rtc:(LCRTC *)rtc didReceiveRemoteVideoTrack:(id)track {
+    [self.remoteVideoTrackDic setObject:track forKey:rtc.remoteUsername];
+    [[_remoteVideoTrackDic objectForKey:rtc.remoteUsername] addRenderer:[_remoteViewDic objectForKey:rtc.remoteUsername]];
     
     static BOOL hasSetVoice = NO;
     if (!hasSetVoice) {
