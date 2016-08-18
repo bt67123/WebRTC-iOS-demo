@@ -34,7 +34,7 @@
     NSString *mailboxPath = [NSString stringWithFormat:@"room%@/r/%@/mailbox/mail%d", _roomId, username, _mailId++];
     NSMutableDictionary *value = [NSMutableDictionary dictionaryWithDictionary:msg];
     [value setObject:self.username forKey:@"from"];
-    [[_ref childByAppendingPath:mailboxPath] setValue:value];
+    [[_ref childByAppendingPath:[mailboxPath copy]] setValue:[value copy]];
 }
 
 @end

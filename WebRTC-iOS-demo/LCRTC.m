@@ -32,7 +32,7 @@
  **/
 - (void)createPeerConnection {
     self.queuedRemoteCandidates = [NSMutableArray array];
-    [RTCPeerConnectionFactory initializeSSL];
+
     self.peerConnectionFactory = [[RTCPeerConnectionFactory alloc] init];
     RTCPair *audioPair = [[RTCPair alloc] initWithKey:@"OfferToReceiveAudio" value:@"true"];
     NSMutableArray *mandatoryConstraints = [NSMutableArray arrayWithObject:audioPair];
@@ -107,8 +107,8 @@
         [self.peerConnection close];
     }
     self.peerConnection = nil;
+    self.peerConnectionFactory = nil;
     self.queuedRemoteCandidates = nil;
-    [RTCPeerConnectionFactory deinitializeSSL];
 }
 
 - (void)handleExchangeInfo:(NSDictionary *)msg {
@@ -194,7 +194,7 @@
                                         };
         LCCore *core = [LCCore sharedInstance];
         NSLog(@".....exchange info : %@", candidateInfo);
-        [core exchange:candidateInfo toUser:_remoteUsername];
+        [core exchange:candidateInfo toUser:[_remoteUsername copy]];
     });
 }
 
@@ -245,7 +245,7 @@ didCreateSessionDescription:(RTCSessionDescription *)sdp
         
         NSLog(@"sdpDict : %@", sdpDict);
         LCCore *core = [LCCore sharedInstance];
-        [core exchange:sdpDict toUser:_remoteUsername];
+        [core exchange:sdpDict toUser:[_remoteUsername copy]];
     });
 }
 

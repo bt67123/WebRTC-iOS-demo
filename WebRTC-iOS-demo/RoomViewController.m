@@ -24,11 +24,15 @@
 @property (nonatomic, strong) NSMutableDictionary *rtcDic;
 @property (nonatomic, strong) NSMutableDictionary *remoteViewDic;
 @property (nonatomic, strong) NSMutableDictionary *remoteVideoTrackDic;
+
+@property (nonatomic, assign) NSInteger initNum;
+@property (nonatomic, assign) NSInteger numOfObserve;
 @end
 
 @implementation RoomViewController
 
 - (void)dealloc {
+
     [_ref removeAllObservers];
     [_ref_roomPath removeAllObservers];
     [_ref_roomPath_r removeAllObservers];
@@ -65,34 +69,38 @@
     core.roomId = _roomId;
     
     __weak typeof(self) weakself = self;
-    static int numOfObserve = 0;
+    _initNum = -1;
     [_ref_roomPath observeEventType:WEventTypeChildAdded withBlock:^(WDataSnapshot * _Nonnull snapshot) {
-        for (NSString *username in [snapshot.value allKeys]) {
-            if (![_username isEqualToString:username]) {
+        if (weakself.initNum == -1) {
+            weakself.initNum = [[snapshot.value allKeys] count];
+        }
+        for (NSString *remoteUsername in [snapshot.value allKeys]) {
+            if (![weakself.username isEqualToString:remoteUsername]) {
                 
-                if (![weakself.rtcDic.allKeys containsObject:username]) {
-                    [weakself createRemoteViewWithUsername:username];
+                if (![weakself.rtcDic.allKeys containsObject:remoteUsername]) {
+                    [weakself createRemoteViewWithUsername:remoteUsername];
                     
                     LCRTC *rtc = [[LCRTC alloc] init];
                     rtc.delegate = weakself;
-                    [weakself.rtcDic setObject:rtc forKey:username];
+                    [weakself.rtcDic setObject:rtc forKey:remoteUsername];
                     [rtc createPeerConnection];
-                    rtc.remoteUsername = username;
+                    rtc.remoteUsername = remoteUsername;
                 
                 }
-                if (numOfObserve == 0) {
-                    LCRTC *rtc = [weakself.rtcDic objectForKey:username];
+                if (weakself.numOfObserve < weakself.initNum) {
+                    LCRTC *rtc = [weakself.rtcDic objectForKey:remoteUsername];
                     rtc.isCaller = YES;
                     [rtc createOffer];
+                    weakself.numOfObserve++;
                 }
             }
         }
-        numOfObserve++;
     }];
-    
+
     [_ref_roomPath_r observeEventType:WEventTypeChildAdded withBlock:^(WDataSnapshot * _Nonnull snapshot) {
+        NSLog(@"roompath-r ------ %@", snapshot);
         NSString *remoteUsername = snapshot.key;
-        if (![_username isEqualToString:remoteUsername]) {
+        if (![weakself.username isEqualToString:remoteUsername]) {
             
             if (![weakself.rtcDic.allKeys containsObject:remoteUsername]) {
                 [weakself createRemoteViewWithUsername:snapshot.key];
@@ -107,7 +115,7 @@
     }];
     
     [_ref_mailbox observeEventType:WEventTypeChildAdded withBlock:^(WDataSnapshot * _Nonnull snapshot) {
-        NSLog(@"%@", snapshot);
+        NSLog(@"mailbox ------ %@", snapshot);
         if ([snapshot.value isKindOfClass:[NSDictionary class]]) {
             LCRTC *rtc = [weakself.rtcDic objectForKey:[snapshot.value objectForKey:@"from"]];
             if (rtc) {
@@ -122,6 +130,24 @@
     [super viewDidDisappear:animated];
     
     [_ref_roomPath setValue:nil];
+    [self disconnect];
+}
+
+- (void)disconnect {
+    __weak typeof(self) weakself = self;
+    [self.remoteVideoTrackDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        RTCVideoTrack *track = obj;
+        RTCEAGLVideoView *remoteView = [weakself.remoteViewDic objectForKey:key];
+        [track removeRenderer:remoteView];
+        [remoteView renderFrame:nil];
+    }];
+    
+    [_localVideoTrack removeRenderer:_localView];
+    _localVideoTrack = nil;
+    [_localView renderFrame:nil];
+    
+    [self.remoteVideoTrackDic removeAllObjects];
+    [self.remoteViewDic removeAllObjects];
     
     [_rtcDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         LCRTC *rtc = obj;
